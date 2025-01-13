@@ -1,0 +1,8 @@
+<h1>{% if category %}{{ category.name }}{% else %}All products{% endif %}</h1>
+<ul>
+{% for product in products %}
+  <li><a href="/catalog/{{ product.sku }}/">{{ product.name }}</a> - {{ product.display_price }}</li>
+{% empty %}
+  <li>No products.</li>
+{% endfor %}
+</ul>
