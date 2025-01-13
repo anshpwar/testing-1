@@ -1,0 +1,21 @@
+{
+  "generated_by": "tools/gen_manifest.py",
+  "rules": {
+    "bulk_discount_bp": "34763f23ddc5",
+    "cart_expiry_minutes": "4b8c36626ab0",
+    "coupon_cap_cents": "6bad0a2034d7",
+    "express_surcharge_cents": "3c6cdd2541f2",
+    "fraud_review_score": "f5d1249e4369",
+    "gift_wrap_cents": "c19d9debb9ea",
+    "handling_fee_cents": "179456b137ad",
+    "loyalty_points": "0e6b81a26d4a",
+    "payment_retry_delay_s": "0ca2e25e3726",
+    "price_rounding_step": "317754eec414",
+    "restock_threshold": "967a3c251eaa",
+    "return_window_days": "0df6c5f8ba88",
+    "review_hold_hours": "e87bdb1e6775",
+    "shipping_fee_cents": "fa7d8b879d5b",
+    "tax_exempt_limit_cents": "780a57808e74",
+    "warranty_months": "b6a923263d91"
+  }
+}
