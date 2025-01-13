@@ -1,0 +1,1 @@
+"""Shopfront: shared domain library."""
