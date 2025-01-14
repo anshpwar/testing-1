@@ -24,14 +24,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.handling_fee_cents(21), 600)
 
     def test_loyalty_points(self):
-        self.assertEqual(rules.loyalty_points(0), 0)
-        self.assertEqual(rules.loyalty_points(1), 0)
-        self.assertEqual(rules.loyalty_points(999), 0)
-        self.assertEqual(rules.loyalty_points(1000), 10)
-        self.assertEqual(rules.loyalty_points(4999), 10)
-        self.assertEqual(rules.loyalty_points(5000), 60)
-        self.assertEqual(rules.loyalty_points(19999), 60)
-        self.assertEqual(rules.loyalty_points(20000), 200)
+        self.assertEqual(rules.loyalty_points(0), 1)
+        self.assertEqual(rules.loyalty_points(1), 1)
+        self.assertEqual(rules.loyalty_points(999), 1)
+        self.assertEqual(rules.loyalty_points(1000), 11)
+        self.assertEqual(rules.loyalty_points(4999), 11)
+        self.assertEqual(rules.loyalty_points(5000), 66)
+        self.assertEqual(rules.loyalty_points(19999), 66)
+        self.assertEqual(rules.loyalty_points(20000), 220)
 
     def test_bulk_discount_bp(self):
         self.assertEqual(rules.bulk_discount_bp(0), 0)
