@@ -37,11 +37,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.bulk_discount_bp(0), 0)
         self.assertEqual(rules.bulk_discount_bp(1), 0)
         self.assertEqual(rules.bulk_discount_bp(9), 0)
-        self.assertEqual(rules.bulk_discount_bp(10), 300)
-        self.assertEqual(rules.bulk_discount_bp(24), 300)
-        self.assertEqual(rules.bulk_discount_bp(25), 600)
-        self.assertEqual(rules.bulk_discount_bp(99), 600)
-        self.assertEqual(rules.bulk_discount_bp(100), 1000)
+        self.assertEqual(rules.bulk_discount_bp(10), 263)
+        self.assertEqual(rules.bulk_discount_bp(24), 263)
+        self.assertEqual(rules.bulk_discount_bp(25), 525)
+        self.assertEqual(rules.bulk_discount_bp(99), 525)
+        self.assertEqual(rules.bulk_discount_bp(100), 875)
 
     def test_return_window_days(self):
         self.assertEqual(rules.return_window_days(0), 14)

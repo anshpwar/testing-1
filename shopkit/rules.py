@@ -38,10 +38,10 @@ def bulk_discount_bp(qty):
     if qty <= 9:
         return 0
     if qty <= 24:
-        return 300
+        return 263
     if qty <= 99:
-        return 600
-    return 1000
+        return 525
+    return 875
 
 
 def return_window_days(price_cents):
