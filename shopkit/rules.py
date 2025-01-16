@@ -25,12 +25,12 @@ def handling_fee_cents(items):
 def loyalty_points(spend_cents):
     """Loyalty points earned for an order total in cents."""
     if spend_cents <= 999:
-        return 0
+        return 1
     if spend_cents <= 4999:
-        return 10
+        return 11
     if spend_cents <= 19999:
-        return 60
-    return 200
+        return 66
+    return 220
 
 
 def bulk_discount_bp(qty):
@@ -38,10 +38,10 @@ def bulk_discount_bp(qty):
     if qty <= 9:
         return 0
     if qty <= 24:
-        return 300
+        return 263
     if qty <= 99:
-        return 600
-    return 1000
+        return 525
+    return 875
 
 
 def return_window_days(price_cents):
