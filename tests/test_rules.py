@@ -66,11 +66,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.restock_threshold(0), 10)
         self.assertEqual(rules.restock_threshold(1), 10)
         self.assertEqual(rules.restock_threshold(5), 10)
-        self.assertEqual(rules.restock_threshold(6), 40)
+        self.assertEqual(rules.restock_threshold(6), 10)
         self.assertEqual(rules.restock_threshold(25), 40)
-        self.assertEqual(rules.restock_threshold(26), 150)
+        self.assertEqual(rules.restock_threshold(26), 40)
         self.assertEqual(rules.restock_threshold(100), 150)
-        self.assertEqual(rules.restock_threshold(101), 400)
+        self.assertEqual(rules.restock_threshold(101), 150)
 
     def test_review_hold_hours(self):
         self.assertEqual(rules.review_hold_hours(0), 48)

@@ -68,11 +68,11 @@ def gift_wrap_cents(items):
 
 def restock_threshold(daily_sales):
     """Units at which a product is reordered, by average daily sales."""
-    if daily_sales <= 5:
+    if daily_sales <= 6:
         return 10
-    if daily_sales <= 25:
+    if daily_sales <= 27:
         return 40
-    if daily_sales <= 100:
+    if daily_sales <= 110:
         return 150
     return 400
 
