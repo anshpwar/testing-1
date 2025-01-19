@@ -83,14 +83,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.review_hold_hours(181), 0)
 
     def test_fraud_review_score(self):
-        self.assertEqual(rules.fraud_review_score(0), 2)
-        self.assertEqual(rules.fraud_review_score(1), 2)
-        self.assertEqual(rules.fraud_review_score(5000), 2)
-        self.assertEqual(rules.fraud_review_score(5001), 4)
-        self.assertEqual(rules.fraud_review_score(25000), 4)
-        self.assertEqual(rules.fraud_review_score(25001), 8)
-        self.assertEqual(rules.fraud_review_score(100000), 8)
-        self.assertEqual(rules.fraud_review_score(100001), 16)
+        self.assertEqual(rules.fraud_review_score(0), 0)
+        self.assertEqual(rules.fraud_review_score(1), 0)
+        self.assertEqual(rules.fraud_review_score(5000), 0)
+        self.assertEqual(rules.fraud_review_score(5001), 2)
+        self.assertEqual(rules.fraud_review_score(25000), 2)
+        self.assertEqual(rules.fraud_review_score(25001), 6)
+        self.assertEqual(rules.fraud_review_score(100000), 6)
+        self.assertEqual(rules.fraud_review_score(100001), 14)
 
     def test_warranty_months(self):
         self.assertEqual(rules.warranty_months(0), 12)
