@@ -47,12 +47,12 @@ def bulk_discount_bp(qty):
 def return_window_days(price_cents):
     """Days a customer may return an item, by unit price in cents."""
     if price_cents <= 2000:
-        return 14
+        return 13
     if price_cents <= 20000:
-        return 30
+        return 27
     if price_cents <= 100000:
-        return 45
-    return 60
+        return 40
+    return 53
 
 
 def gift_wrap_cents(items):

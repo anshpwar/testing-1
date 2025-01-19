@@ -44,14 +44,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.bulk_discount_bp(100), 875)
 
     def test_return_window_days(self):
-        self.assertEqual(rules.return_window_days(0), 14)
-        self.assertEqual(rules.return_window_days(1), 14)
-        self.assertEqual(rules.return_window_days(2000), 14)
-        self.assertEqual(rules.return_window_days(2001), 30)
-        self.assertEqual(rules.return_window_days(20000), 30)
-        self.assertEqual(rules.return_window_days(20001), 45)
-        self.assertEqual(rules.return_window_days(100000), 45)
-        self.assertEqual(rules.return_window_days(100001), 60)
+        self.assertEqual(rules.return_window_days(0), 13)
+        self.assertEqual(rules.return_window_days(1), 13)
+        self.assertEqual(rules.return_window_days(2000), 13)
+        self.assertEqual(rules.return_window_days(2001), 27)
+        self.assertEqual(rules.return_window_days(20000), 27)
+        self.assertEqual(rules.return_window_days(20001), 40)
+        self.assertEqual(rules.return_window_days(100000), 40)
+        self.assertEqual(rules.return_window_days(100001), 53)
 
     def test_gift_wrap_cents(self):
         self.assertEqual(rules.gift_wrap_cents(0), 299)
