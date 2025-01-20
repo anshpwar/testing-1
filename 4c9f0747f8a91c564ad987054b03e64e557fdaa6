@@ -1,0 +1,19 @@
+{
+  "env": "prod",
+  "finished_at": "2025-01-20T01:16:00+0000",
+  "kind": "deployment",
+  "patch_id": "f96e9afb9c55c97bee9f8119d691d60d003a0f78",
+  "run_id": "dep-r01-0007",
+  "schema_version": 1,
+  "services": [
+    "storefront-web",
+    "storefront-worker"
+  ],
+  "source": "fixture-deployer",
+  "started_at": "2025-01-20T01:10:00+0000",
+  "status": "SUCCEEDED",
+  "subject_commit": "4c9f0747f8a91c564ad987054b03e64e557fdaa6",
+  "suite": "n/a",
+  "suite_digest": "bb184c809868bfe29782270836089bb95a91e0ad",
+  "synthetic": true
+}
