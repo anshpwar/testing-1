@@ -91,12 +91,12 @@ def review_hold_hours(account_age_days):
 def fraud_review_score(order_cents):
     """Fraud review score contribution by order total in cents."""
     if order_cents <= 5000:
-        return 1
+        return 2
     if order_cents <= 25000:
-        return 3
+        return 4
     if order_cents <= 100000:
-        return 7
-    return 15
+        return 8
+    return 16
 
 
 def warranty_months(price_cents):
