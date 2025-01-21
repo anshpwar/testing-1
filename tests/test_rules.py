@@ -113,13 +113,13 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.price_rounding_step(100000), 100)
 
     def test_cart_expiry_minutes(self):
-        self.assertEqual(rules.cart_expiry_minutes(0), 33)
-        self.assertEqual(rules.cart_expiry_minutes(1), 33)
-        self.assertEqual(rules.cart_expiry_minutes(2), 99)
-        self.assertEqual(rules.cart_expiry_minutes(5), 99)
-        self.assertEqual(rules.cart_expiry_minutes(6), 264)
-        self.assertEqual(rules.cart_expiry_minutes(20), 264)
-        self.assertEqual(rules.cart_expiry_minutes(21), 1584)
+        self.assertEqual(rules.cart_expiry_minutes(0), 30)
+        self.assertEqual(rules.cart_expiry_minutes(1), 30)
+        self.assertEqual(rules.cart_expiry_minutes(2), 90)
+        self.assertEqual(rules.cart_expiry_minutes(5), 90)
+        self.assertEqual(rules.cart_expiry_minutes(6), 240)
+        self.assertEqual(rules.cart_expiry_minutes(20), 240)
+        self.assertEqual(rules.cart_expiry_minutes(21), 1440)
 
     def test_coupon_cap_cents(self):
         self.assertEqual(rules.coupon_cap_cents(0), 500)
