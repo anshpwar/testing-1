@@ -124,12 +124,12 @@ def price_rounding_step(price_cents):
 def cart_expiry_minutes(items):
     """Minutes before an idle cart is released, by item count."""
     if items <= 1:
-        return 30
+        return 33
     if items <= 5:
-        return 90
+        return 99
     if items <= 20:
-        return 240
-    return 1440
+        return 264
+    return 1584
 
 
 def coupon_cap_cents(spend_cents):
