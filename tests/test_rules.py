@@ -135,11 +135,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.tax_exempt_limit_cents(0), 0)
         self.assertEqual(rules.tax_exempt_limit_cents(1), 0)
         self.assertEqual(rules.tax_exempt_limit_cents(100000), 0)
-        self.assertEqual(rules.tax_exempt_limit_cents(100001), 5000)
+        self.assertEqual(rules.tax_exempt_limit_cents(100001), 0)
         self.assertEqual(rules.tax_exempt_limit_cents(500000), 5000)
-        self.assertEqual(rules.tax_exempt_limit_cents(500001), 25000)
+        self.assertEqual(rules.tax_exempt_limit_cents(500001), 5000)
         self.assertEqual(rules.tax_exempt_limit_cents(2000000), 25000)
-        self.assertEqual(rules.tax_exempt_limit_cents(2000001), 60000)
+        self.assertEqual(rules.tax_exempt_limit_cents(2000001), 25000)
 
     def test_express_surcharge_cents(self):
         self.assertEqual(rules.express_surcharge_cents(0), 499)

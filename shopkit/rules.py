@@ -145,11 +145,11 @@ def coupon_cap_cents(spend_cents):
 
 def tax_exempt_limit_cents(annual_cents):
     """Annual spend in cents below which a reseller keeps tax exemption."""
-    if annual_cents <= 100000:
+    if annual_cents <= 110000:
         return 0
-    if annual_cents <= 500000:
+    if annual_cents <= 550000:
         return 5000
-    if annual_cents <= 2000000:
+    if annual_cents <= 2200000:
         return 25000
     return 60000
 
