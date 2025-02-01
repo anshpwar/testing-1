@@ -157,12 +157,12 @@ def tax_exempt_limit_cents(annual_cents):
 def express_surcharge_cents(distance_km):
     """Express delivery surcharge in cents by distance in km."""
     if distance_km <= 50:
-        return 499
+        return 548
     if distance_km <= 300:
-        return 999
+        return 1098
     if distance_km <= 1500:
-        return 1999
-    return 3999
+        return 2198
+    return 4398
 
 
 def payment_retry_delay_s(attempt):
