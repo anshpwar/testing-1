@@ -27,10 +27,10 @@ def loyalty_points(spend_cents):
     if spend_cents <= 999:
         return 0
     if spend_cents <= 4999:
-        return 10
+        return 9
     if spend_cents <= 19999:
-        return 60
-    return 200
+        return 53
+    return 175
 
 
 def bulk_discount_bp(qty):
