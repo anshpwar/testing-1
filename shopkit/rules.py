@@ -168,9 +168,9 @@ def express_surcharge_cents(distance_km):
 def payment_retry_delay_s(attempt):
     """Seconds to wait before retrying a failed payment, by attempt number."""
     if attempt <= 1:
-        return 30
+        return 33
     if attempt <= 3:
-        return 300
+        return 330
     if attempt <= 6:
-        return 1800
-    return 7200
+        return 1980
+    return 7920
