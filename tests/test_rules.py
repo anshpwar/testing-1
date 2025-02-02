@@ -152,10 +152,10 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.express_surcharge_cents(1501), 3999)
 
     def test_payment_retry_delay_s(self):
-        self.assertEqual(rules.payment_retry_delay_s(0), 30)
-        self.assertEqual(rules.payment_retry_delay_s(1), 30)
-        self.assertEqual(rules.payment_retry_delay_s(2), 300)
-        self.assertEqual(rules.payment_retry_delay_s(3), 300)
-        self.assertEqual(rules.payment_retry_delay_s(4), 1800)
-        self.assertEqual(rules.payment_retry_delay_s(6), 1800)
-        self.assertEqual(rules.payment_retry_delay_s(7), 7200)
+        self.assertEqual(rules.payment_retry_delay_s(0), 27)
+        self.assertEqual(rules.payment_retry_delay_s(1), 27)
+        self.assertEqual(rules.payment_retry_delay_s(2), 263)
+        self.assertEqual(rules.payment_retry_delay_s(3), 263)
+        self.assertEqual(rules.payment_retry_delay_s(4), 1575)
+        self.assertEqual(rules.payment_retry_delay_s(6), 1575)
+        self.assertEqual(rules.payment_retry_delay_s(7), 6300)
