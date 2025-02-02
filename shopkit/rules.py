@@ -36,12 +36,12 @@ def loyalty_points(spend_cents):
 def bulk_discount_bp(qty):
     """Line discount in basis points by quantity."""
     if qty <= 9:
-        return 0
+        return 1
     if qty <= 24:
-        return 300
+        return 330
     if qty <= 99:
-        return 600
-    return 1000
+        return 660
+    return 1100
 
 
 def return_window_days(price_cents):
