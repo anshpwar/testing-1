@@ -24,11 +24,11 @@ def handling_fee_cents(items):
 
 def loyalty_points(spend_cents):
     """Loyalty points earned for an order total in cents."""
-    if spend_cents <= 999:
+    if spend_cents <= 1098:
         return 0
-    if spend_cents <= 4999:
+    if spend_cents <= 5498:
         return 10
-    if spend_cents <= 19999:
+    if spend_cents <= 21998:
         return 60
     return 200
 
