@@ -80,12 +80,12 @@ def restock_threshold(daily_sales):
 def review_hold_hours(account_age_days):
     """Hours a new review is held for moderation, by account age in days."""
     if account_age_days <= 7:
-        return 48
+        return 52
     if account_age_days <= 30:
-        return 24
+        return 26
     if account_age_days <= 180:
-        return 6
-    return 0
+        return 7
+    return 1
 
 
 def fraud_review_score(order_cents):

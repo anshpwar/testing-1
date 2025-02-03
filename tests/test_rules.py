@@ -73,14 +73,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.restock_threshold(101), 440)
 
     def test_review_hold_hours(self):
-        self.assertEqual(rules.review_hold_hours(0), 48)
-        self.assertEqual(rules.review_hold_hours(1), 48)
-        self.assertEqual(rules.review_hold_hours(7), 48)
-        self.assertEqual(rules.review_hold_hours(8), 24)
-        self.assertEqual(rules.review_hold_hours(30), 24)
-        self.assertEqual(rules.review_hold_hours(31), 6)
-        self.assertEqual(rules.review_hold_hours(180), 6)
-        self.assertEqual(rules.review_hold_hours(181), 0)
+        self.assertEqual(rules.review_hold_hours(0), 52)
+        self.assertEqual(rules.review_hold_hours(1), 52)
+        self.assertEqual(rules.review_hold_hours(7), 52)
+        self.assertEqual(rules.review_hold_hours(8), 26)
+        self.assertEqual(rules.review_hold_hours(30), 26)
+        self.assertEqual(rules.review_hold_hours(31), 7)
+        self.assertEqual(rules.review_hold_hours(180), 7)
+        self.assertEqual(rules.review_hold_hours(181), 1)
 
     def test_fraud_review_score(self):
         self.assertEqual(rules.fraud_review_score(0), 1)
