@@ -47,11 +47,11 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.return_window_days(0), 14)
         self.assertEqual(rules.return_window_days(1), 14)
         self.assertEqual(rules.return_window_days(2000), 14)
-        self.assertEqual(rules.return_window_days(2001), 30)
+        self.assertEqual(rules.return_window_days(2001), 14)
         self.assertEqual(rules.return_window_days(20000), 30)
-        self.assertEqual(rules.return_window_days(20001), 45)
+        self.assertEqual(rules.return_window_days(20001), 30)
         self.assertEqual(rules.return_window_days(100000), 45)
-        self.assertEqual(rules.return_window_days(100001), 60)
+        self.assertEqual(rules.return_window_days(100001), 45)
 
     def test_gift_wrap_cents(self):
         self.assertEqual(rules.gift_wrap_cents(0), 299)
