@@ -63,14 +63,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.gift_wrap_cents(11), 1648)
 
     def test_restock_threshold(self):
-        self.assertEqual(rules.restock_threshold(0), 10)
-        self.assertEqual(rules.restock_threshold(1), 10)
-        self.assertEqual(rules.restock_threshold(5), 10)
-        self.assertEqual(rules.restock_threshold(6), 40)
-        self.assertEqual(rules.restock_threshold(25), 40)
-        self.assertEqual(rules.restock_threshold(26), 150)
-        self.assertEqual(rules.restock_threshold(100), 150)
-        self.assertEqual(rules.restock_threshold(101), 400)
+        self.assertEqual(rules.restock_threshold(0), 11)
+        self.assertEqual(rules.restock_threshold(1), 11)
+        self.assertEqual(rules.restock_threshold(5), 11)
+        self.assertEqual(rules.restock_threshold(6), 44)
+        self.assertEqual(rules.restock_threshold(25), 44)
+        self.assertEqual(rules.restock_threshold(26), 165)
+        self.assertEqual(rules.restock_threshold(100), 165)
+        self.assertEqual(rules.restock_threshold(101), 440)
 
     def test_review_hold_hours(self):
         self.assertEqual(rules.review_hold_hours(0), 48)
