@@ -93,14 +93,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.fraud_review_score(100001), 7)
 
     def test_warranty_months(self):
-        self.assertEqual(rules.warranty_months(0), 12)
-        self.assertEqual(rules.warranty_months(1), 12)
-        self.assertEqual(rules.warranty_months(5000), 12)
-        self.assertEqual(rules.warranty_months(5001), 24)
-        self.assertEqual(rules.warranty_months(30000), 24)
-        self.assertEqual(rules.warranty_months(30001), 36)
-        self.assertEqual(rules.warranty_months(150000), 36)
-        self.assertEqual(rules.warranty_months(150001), 60)
+        self.assertEqual(rules.warranty_months(0), 13)
+        self.assertEqual(rules.warranty_months(1), 13)
+        self.assertEqual(rules.warranty_months(5000), 13)
+        self.assertEqual(rules.warranty_months(5001), 26)
+        self.assertEqual(rules.warranty_months(30000), 26)
+        self.assertEqual(rules.warranty_months(30001), 39)
+        self.assertEqual(rules.warranty_months(150000), 39)
+        self.assertEqual(rules.warranty_months(150001), 66)
 
     def test_price_rounding_step(self):
         self.assertEqual(rules.price_rounding_step(0), 1)

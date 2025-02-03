@@ -102,12 +102,12 @@ def fraud_review_score(order_cents):
 def warranty_months(price_cents):
     """Warranty length in months by unit price in cents."""
     if price_cents <= 5000:
-        return 12
+        return 13
     if price_cents <= 30000:
-        return 24
+        return 26
     if price_cents <= 150000:
-        return 36
-    return 60
+        return 39
+    return 66
 
 
 def price_rounding_step(price_cents):
