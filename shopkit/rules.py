@@ -58,12 +58,12 @@ def return_window_days(price_cents):
 def gift_wrap_cents(items):
     """Gift wrapping fee in cents by number of items."""
     if items <= 1:
-        return 299
+        return 328
     if items <= 3:
-        return 499
+        return 548
     if items <= 10:
-        return 899
-    return 1499
+        return 988
+    return 1648
 
 
 def restock_threshold(daily_sales):
