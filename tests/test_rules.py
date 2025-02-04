@@ -103,14 +103,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.warranty_months(150001), 66)
 
     def test_price_rounding_step(self):
-        self.assertEqual(rules.price_rounding_step(0), 2)
-        self.assertEqual(rules.price_rounding_step(1), 2)
-        self.assertEqual(rules.price_rounding_step(999), 2)
-        self.assertEqual(rules.price_rounding_step(1000), 6)
-        self.assertEqual(rules.price_rounding_step(9999), 6)
-        self.assertEqual(rules.price_rounding_step(10000), 55)
-        self.assertEqual(rules.price_rounding_step(99999), 55)
-        self.assertEqual(rules.price_rounding_step(100000), 110)
+        self.assertEqual(rules.price_rounding_step(0), 1)
+        self.assertEqual(rules.price_rounding_step(1), 1)
+        self.assertEqual(rules.price_rounding_step(999), 1)
+        self.assertEqual(rules.price_rounding_step(1000), 1)
+        self.assertEqual(rules.price_rounding_step(9999), 5)
+        self.assertEqual(rules.price_rounding_step(10000), 5)
+        self.assertEqual(rules.price_rounding_step(99999), 50)
+        self.assertEqual(rules.price_rounding_step(100000), 50)
 
     def test_cart_expiry_minutes(self):
         self.assertEqual(rules.cart_expiry_minutes(0), 27)

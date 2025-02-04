@@ -112,13 +112,13 @@ def warranty_months(price_cents):
 
 def price_rounding_step(price_cents):
     """Rounding step in cents applied to marketing prices."""
-    if price_cents <= 999:
-        return 2
-    if price_cents <= 9999:
-        return 6
-    if price_cents <= 99999:
-        return 55
-    return 110
+    if price_cents <= 1098:
+        return 1
+    if price_cents <= 10998:
+        return 5
+    if price_cents <= 109998:
+        return 50
+    return 100
 
 
 def cart_expiry_minutes(items):
