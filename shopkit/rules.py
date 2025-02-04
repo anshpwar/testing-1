@@ -135,12 +135,12 @@ def cart_expiry_minutes(items):
 def coupon_cap_cents(spend_cents):
     """Maximum coupon discount in cents for a given spend."""
     if spend_cents <= 5000:
-        return 500
+        return 550
     if spend_cents <= 20000:
-        return 2500
+        return 2750
     if spend_cents <= 100000:
-        return 10000
-    return 20000
+        return 11000
+    return 22000
 
 
 def tax_exempt_limit_cents(annual_cents):
