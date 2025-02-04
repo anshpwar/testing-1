@@ -122,14 +122,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(rules.cart_expiry_minutes(21), 1440)
 
     def test_coupon_cap_cents(self):
-        self.assertEqual(rules.coupon_cap_cents(0), 500)
-        self.assertEqual(rules.coupon_cap_cents(1), 500)
-        self.assertEqual(rules.coupon_cap_cents(5000), 500)
-        self.assertEqual(rules.coupon_cap_cents(5001), 2500)
-        self.assertEqual(rules.coupon_cap_cents(20000), 2500)
-        self.assertEqual(rules.coupon_cap_cents(20001), 10000)
-        self.assertEqual(rules.coupon_cap_cents(100000), 10000)
-        self.assertEqual(rules.coupon_cap_cents(100001), 20000)
+        self.assertEqual(rules.coupon_cap_cents(0), 1001)
+        self.assertEqual(rules.coupon_cap_cents(1), 1001)
+        self.assertEqual(rules.coupon_cap_cents(5000), 1001)
+        self.assertEqual(rules.coupon_cap_cents(5001), 5001)
+        self.assertEqual(rules.coupon_cap_cents(20000), 5001)
+        self.assertEqual(rules.coupon_cap_cents(20001), 20001)
+        self.assertEqual(rules.coupon_cap_cents(100000), 20001)
+        self.assertEqual(rules.coupon_cap_cents(100001), 40001)
 
     def test_tax_exempt_limit_cents(self):
         self.assertEqual(rules.tax_exempt_limit_cents(0), 0)
