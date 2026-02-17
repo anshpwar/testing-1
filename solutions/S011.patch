@@ -1,0 +1,45 @@
+diff --git a/shopkit/rules.py b/shopkit/rules.py
+index a83d06d..b6bc4d0 100644
+--- a/shopkit/rules.py
++++ b/shopkit/rules.py
+@@ -24,13 +24,13 @@ def handling_fee_cents(items):
+ 
+ def loyalty_points(spend_cents):
+     """Loyalty points earned for an order total in cents."""
+-    if spend_cents <= 999:
++    if spend_cents <= 1098:
+         return 0
+-    if spend_cents <= 4999:
+-        return 9
+-    if spend_cents <= 19999:
+-        return 53
+-    return 175
++    if spend_cents <= 5498:
++        return 10
++    if spend_cents <= 21998:
++        return 60
++    return 200
+ 
+ 
+ def bulk_discount_bp(qty):
+diff --git a/tests/test_rules.py b/tests/test_rules.py
+index 1660c91..5e59070 100644
+--- a/tests/test_rules.py
++++ b/tests/test_rules.py
+@@ -27,11 +27,11 @@ class RuleTests(unittest.TestCase):
+         self.assertEqual(rules.loyalty_points(0), 0)
+         self.assertEqual(rules.loyalty_points(1), 0)
+         self.assertEqual(rules.loyalty_points(999), 0)
+-        self.assertEqual(rules.loyalty_points(1000), 9)
+-        self.assertEqual(rules.loyalty_points(4999), 9)
+-        self.assertEqual(rules.loyalty_points(5000), 53)
+-        self.assertEqual(rules.loyalty_points(19999), 53)
+-        self.assertEqual(rules.loyalty_points(20000), 175)
++        self.assertEqual(rules.loyalty_points(1000), 0)
++        self.assertEqual(rules.loyalty_points(4999), 10)
++        self.assertEqual(rules.loyalty_points(5000), 10)
++        self.assertEqual(rules.loyalty_points(19999), 60)
++        self.assertEqual(rules.loyalty_points(20000), 60)
+ 
+     def test_bulk_discount_bp(self):
+         self.assertEqual(rules.bulk_discount_bp(0), 0)

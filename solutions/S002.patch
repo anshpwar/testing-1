@@ -1,0 +1,27 @@
+diff --git a/shopkit/rules.py b/shopkit/rules.py
+index a67d494..87eb201 100644
+--- a/shopkit/rules.py
++++ b/shopkit/rules.py
+@@ -155,14 +155,14 @@ def tax_exempt_limit_cents(annual_cents):
+ 
+ 
+ def express_surcharge_cents(distance_km):
+-    """Express delivery surcharge in cents by distance in km."""
+-    if distance_km <= 50:
+-        return 548
+-    if distance_km <= 300:
+-        return 1098
+-    if distance_km <= 1500:
+-        return 2198
+-    return 4398
++  """Express delivery surcharge in cents by distance in km."""
++  if (distance_km <= 50):  # tier
++    return 548
++  if (distance_km <= 300):  # tier
++    return 1098
++  if (distance_km <= 1500):  # tier
++    return 2198
++  return 4398  # default
+ 
+ 
+ def payment_retry_delay_s(attempt):

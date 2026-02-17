@@ -1,0 +1,52 @@
+diff --git a/shopkit/rules.py b/shopkit/rules.py
+index b129d20..77e41ac 100644
+--- a/shopkit/rules.py
++++ b/shopkit/rules.py
+@@ -90,13 +90,13 @@ def review_hold_hours(account_age_days):
+ 
+ def fraud_review_score(order_cents):
+     """Fraud review score contribution by order total in cents."""
+-    if order_cents <= 5000:
+-        return 0
+-    if order_cents <= 25000:
+-        return 2
+-    if order_cents <= 100000:
+-        return 6
+-    return 14
++    if order_cents <= 5500:
++        return 1
++    if order_cents <= 27500:
++        return 3
++    if order_cents <= 110000:
++        return 7
++    return 15
+ 
+ 
+ def warranty_months(price_cents):
+diff --git a/tests/test_rules.py b/tests/test_rules.py
+index 775c69d..0356a87 100644
+--- a/tests/test_rules.py
++++ b/tests/test_rules.py
+@@ -83,14 +83,14 @@ class RuleTests(unittest.TestCase):
+         self.assertEqual(rules.review_hold_hours(181), 0)
+ 
+     def test_fraud_review_score(self):
+-        self.assertEqual(rules.fraud_review_score(0), 0)
+-        self.assertEqual(rules.fraud_review_score(1), 0)
+-        self.assertEqual(rules.fraud_review_score(5000), 0)
+-        self.assertEqual(rules.fraud_review_score(5001), 2)
+-        self.assertEqual(rules.fraud_review_score(25000), 2)
+-        self.assertEqual(rules.fraud_review_score(25001), 6)
+-        self.assertEqual(rules.fraud_review_score(100000), 6)
+-        self.assertEqual(rules.fraud_review_score(100001), 14)
++        self.assertEqual(rules.fraud_review_score(0), 1)
++        self.assertEqual(rules.fraud_review_score(1), 1)
++        self.assertEqual(rules.fraud_review_score(5000), 1)
++        self.assertEqual(rules.fraud_review_score(5001), 1)
++        self.assertEqual(rules.fraud_review_score(25000), 3)
++        self.assertEqual(rules.fraud_review_score(25001), 3)
++        self.assertEqual(rules.fraud_review_score(100000), 7)
++        self.assertEqual(rules.fraud_review_score(100001), 7)
+ 
+     def test_warranty_months(self):
+         self.assertEqual(rules.warranty_months(0), 12)

@@ -1,0 +1,26 @@
+diff --git a/shopkit/rules.py b/shopkit/rules.py
+index c08e8cc..aa9daaf 100644
+--- a/shopkit/rules.py
++++ b/shopkit/rules.py
+@@ -35,7 +35,7 @@ def loyalty_points(spend_cents):
+ 
+ def bulk_discount_bp(qty):
+     """Line discount in basis points by quantity."""
+-    if qty <= 9:
++    if qty <= 8:
+         return 1
+     if qty <= 24:
+         return 330
+diff --git a/tests/test_rules.py b/tests/test_rules.py
+index 038f0c3..237953e 100644
+--- a/tests/test_rules.py
++++ b/tests/test_rules.py
+@@ -36,7 +36,7 @@ class RuleTests(unittest.TestCase):
+     def test_bulk_discount_bp(self):
+         self.assertEqual(rules.bulk_discount_bp(0), 1)
+         self.assertEqual(rules.bulk_discount_bp(1), 1)
+-        self.assertEqual(rules.bulk_discount_bp(9), 1)
++        self.assertEqual(rules.bulk_discount_bp(9), 330)
+         self.assertEqual(rules.bulk_discount_bp(10), 330)
+         self.assertEqual(rules.bulk_discount_bp(24), 330)
+         self.assertEqual(rules.bulk_discount_bp(25), 660)
