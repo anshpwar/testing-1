@@ -1,0 +1,58 @@
+scenario_id: S013
+repo_id: testing-1
+title: Cherry-pick without -x
+difficulty: 2
+primary_catalog_id: 13
+catalog_ids:
+- 13
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S013/base
+  target: scenario/S013/target
+  all_pairs:
+  - - scenario/S013/base
+    - scenario/S013/target
+  additional_sides: {}
+fork_commit: '@S013.F'
+expected_conflicted_files:
+- shopkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S013/base
+- scenario/S013/target
+original_commits:
+- '@S013.t1'
+derived_commits:
+- '@S013.b1'
+change_relationships:
+- a: '@S013.t1'
+  b: '@S013.b1'
+  relation: identical
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: fraud_review_score
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: no cherry-pick trailer; lineage recoverable only through patch-id
+known_uncertainty: none
+expected_warnings:
+- no explicit origin reference
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: patch_id_equal
+  a: '@S013.t1'
+  b: '@S013.b1'
+- type: trailer
+  commit: '@S013.b1'
+  expect: missing
+id: '13'
+sub_entries: []
+patch_ids:
+  '@S013.t1': 172c60d875e4b6bb9610d09090aab983478a8d38
+  '@S013.b1': 172c60d875e4b6bb9610d09090aab983478a8d38

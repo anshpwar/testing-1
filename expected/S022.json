@@ -1,0 +1,393 @@
+{
+  "scenario_id": "S022",
+  "repo_id": "testing-1",
+  "title": "False 'tests passed' claim inside a multi-failure history",
+  "difficulty": 5,
+  "primary_catalog_id": 22,
+  "catalog_ids": [
+    22,
+    26,
+    32,
+    27,
+    84,
+    12
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S022/base",
+    "target": "scenario/S022/target",
+    "all_pairs": [
+      [
+        "scenario/S022/base",
+        "scenario/S022/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "87a311766537feb50cc6188be2269b50301af0d6",
+  "expected_conflicted_files": [
+    "shopkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S022/base",
+    "scenario/S022/target"
+  ],
+  "original_commits": [
+    "a983402be31ca7ae8d8aa85ab9810f99890dc546"
+  ],
+  "derived_commits": [
+    "9c5eb66ef24fbe1e7c964a4762cb33c2611042a3"
+  ],
+  "change_relationships": [
+    {
+      "a": "a983402be31ca7ae8d8aa85ab9810f99890dc546",
+      "b": "9c5eb66ef24fbe1e7c964a4762cb33c2611042a3",
+      "relation": "unrelated"
+    }
+  ],
+  "files": [
+    "shopkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "shopkit/rules.py",
+      "function": "payment_retry_delay_s"
+    }
+  ],
+  "testing_evidence": "t1 message claims tests passed; no record exists and the suite actually fails",
+  "deployment_evidence": "none",
+  "metadata_availability": "message claim only",
+  "known_uncertainty": "true origin recoverable only by patch-id",
+  "expected_warnings": [
+    "commit message is not test evidence"
+  ],
+  "safe_resolution_constraints": [],
+  "human_review_required": true,
+  "assertions": [
+    {
+      "type": "note",
+      "ref": "ci",
+      "commit": "a983402be31ca7ae8d8aa85ab9810f99890dc546",
+      "expect": "absent"
+    },
+    {
+      "type": "message_contains",
+      "commit": "a983402be31ca7ae8d8aa85ab9810f99890dc546",
+      "text": "all tests passed"
+    },
+    {
+      "type": "real_tests",
+      "commit": "a983402be31ca7ae8d8aa85ab9810f99890dc546",
+      "suite": "unit",
+      "expect": "failed"
+    }
+  ],
+  "id": "22",
+  "sub_entries": [
+    {
+      "original_commits": [
+        "05db013dbf535e6fcbec891b8bb8cf08015805d8"
+      ],
+      "derived_commits": [
+        "579b798e222116134f6c2052712dc1a0374ddffe"
+      ],
+      "change_relationships": [
+        {
+          "a": "05db013dbf535e6fcbec891b8bb8cf08015805d8",
+          "b": "579b798e222116134f6c2052712dc1a0374ddffe",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "shopkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "shopkit/rules.py",
+          "function": "loyalty_points"
+        }
+      ],
+      "testing_evidence": "t1 PASSED; source changed again in t2, which has no record",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "tested code was modified afterwards"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "tree_differs",
+          "a": "05db013dbf535e6fcbec891b8bb8cf08015805d8",
+          "b": "579b798e222116134f6c2052712dc1a0374ddffe",
+          "file": "shopkit/rules.py"
+        },
+        {
+          "type": "note",
+          "ref": "ci",
+          "commit": "579b798e222116134f6c2052712dc1a0374ddffe",
+          "expect": "absent"
+        }
+      ],
+      "id": "22.a",
+      "catalog_id": 26
+    },
+    {
+      "original_commits": [
+        "d1a5f5ff11f054fc0cf805189429410556873c6e"
+      ],
+      "derived_commits": [
+        "c15d9ab6efe8df1cb5242ec2a721990ef662c8ea",
+        "4f4c6b36994ce699fc143627a9cbe5e47f1a157c",
+        "aba1cd3ca00fd56d42a178a933324e75d9ee0682"
+      ],
+      "change_relationships": [
+        {
+          "a": "d1a5f5ff11f054fc0cf805189429410556873c6e",
+          "b": "aba1cd3ca00fd56d42a178a933324e75d9ee0682",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "shopkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "shopkit/rules.py",
+          "function": "return_window_days"
+        }
+      ],
+      "testing_evidence": "t1 PASSED in January 2025; three commits changed the rules since",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "evidence predates later code changes"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "ancestor",
+          "a": "d1a5f5ff11f054fc0cf805189429410556873c6e",
+          "b": "aba1cd3ca00fd56d42a178a933324e75d9ee0682",
+          "expect": true
+        },
+        {
+          "type": "note",
+          "ref": "ci",
+          "commit": "d1a5f5ff11f054fc0cf805189429410556873c6e",
+          "expect": "present",
+          "fields": {
+            "finished_at": "2025-01-06T09:05:00+0000"
+          }
+        }
+      ],
+      "id": "22.b",
+      "catalog_id": 32
+    },
+    {
+      "original_commits": [
+        "1eec278cbc81dc9131c8a5ded3957a1bb63c98ff"
+      ],
+      "derived_commits": [
+        "e621903b1e4270c1c3d39a2718c1a21011b41a2f"
+      ],
+      "change_relationships": [
+        {
+          "a": "1eec278cbc81dc9131c8a5ded3957a1bb63c98ff",
+          "b": "e621903b1e4270c1c3d39a2718c1a21011b41a2f",
+          "relation": "unrelated"
+        }
+      ],
+      "files": [
+        "shopkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "shopkit/rules.py",
+          "function": "fraud_review_score"
+        }
+      ],
+      "testing_evidence": "record stored on t2 describes t1; t1 itself has no record",
+      "deployment_evidence": "none",
+      "metadata_availability": "misattached record",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "note attached to a commit whose subject_commit names another commit"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "note_subject_mismatch",
+          "ref": "ci",
+          "commit": "e621903b1e4270c1c3d39a2718c1a21011b41a2f",
+          "subject": "1eec278cbc81dc9131c8a5ded3957a1bb63c98ff"
+        },
+        {
+          "type": "note",
+          "ref": "ci",
+          "commit": "1eec278cbc81dc9131c8a5ded3957a1bb63c98ff",
+          "expect": "absent"
+        }
+      ],
+      "id": "22.c",
+      "catalog_id": 27
+    },
+    {
+      "original_commits": [
+        "365ac11aa140b10066f9d8cc977ebd8c266262f7"
+      ],
+      "derived_commits": [
+        "165e8e4768f4e9fb91253e27b9c95a8b039658f0"
+      ],
+      "change_relationships": [
+        {
+          "a": "365ac11aa140b10066f9d8cc977ebd8c266262f7",
+          "b": "165e8e4768f4e9fb91253e27b9c95a8b039658f0",
+          "relation": "identical"
+        }
+      ],
+      "files": [
+        "shopkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "shopkit/rules.py",
+          "function": "price_rounding_step"
+        }
+      ],
+      "testing_evidence": "none",
+      "deployment_evidence": "none",
+      "metadata_availability": "message trailer names a nonexistent commit; provenance note names an unrelated commit",
+      "known_uncertainty": "true origin recoverable only by patch-id",
+      "expected_warnings": [
+        "no provenance reference resolves to the true origin"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": true,
+      "assertions": [
+        {
+          "type": "patch_id_equal",
+          "a": "365ac11aa140b10066f9d8cc977ebd8c266262f7",
+          "b": "165e8e4768f4e9fb91253e27b9c95a8b039658f0"
+        },
+        {
+          "type": "trailer",
+          "commit": "165e8e4768f4e9fb91253e27b9c95a8b039658f0",
+          "expect": "invalid",
+          "origin": "365ac11aa140b10066f9d8cc977ebd8c266262f7"
+        },
+        {
+          "type": "note",
+          "ref": "provenance",
+          "commit": "165e8e4768f4e9fb91253e27b9c95a8b039658f0",
+          "expect": "present"
+        }
+      ],
+      "id": "22.d",
+      "catalog_id": 84
+    },
+    {
+      "original_commits": [
+        "216238dd0284378fed000930ee57892b21c647ba"
+      ],
+      "derived_commits": [
+        "c0ed72ead8d214fc7e967d2695b06d0988be0dea"
+      ],
+      "change_relationships": [
+        {
+          "a": "216238dd0284378fed000930ee57892b21c647ba",
+          "b": "c0ed72ead8d214fc7e967d2695b06d0988be0dea",
+          "relation": "partial"
+        }
+      ],
+      "files": [
+        "shopkit/rules.py",
+        "tests/test_rules.py"
+      ],
+      "regions": [
+        {
+          "file": "shopkit/rules.py",
+          "function": "coupon_cap_cents"
+        }
+      ],
+      "testing_evidence": "original t1 PASSED (synthetic); b1 differs from t1 and has no record",
+      "deployment_evidence": "none",
+      "metadata_availability": "full",
+      "known_uncertainty": "none",
+      "expected_warnings": [
+        "backport was modified after cherry-pick; test evidence does not transfer"
+      ],
+      "safe_resolution_constraints": [],
+      "human_review_required": false,
+      "assertions": [
+        {
+          "type": "patch_id_differs",
+          "a": "216238dd0284378fed000930ee57892b21c647ba",
+          "b": "c0ed72ead8d214fc7e967d2695b06d0988be0dea"
+        },
+        {
+          "type": "trailer",
+          "commit": "c0ed72ead8d214fc7e967d2695b06d0988be0dea",
+          "expect": "valid",
+          "origin": "216238dd0284378fed000930ee57892b21c647ba"
+        }
+      ],
+      "id": "22.e",
+      "catalog_id": 12
+    }
+  ],
+  "patch_ids": {
+    "@S022.t1": "324dfb41f4edcf00a23f9a835fc519d612cfae22",
+    "@S022.b1": "d07afb7e109ae9e0b61b458ebb677eed3ab1e61f",
+    "@S022.c26_t1": "b53abacc9066650e2bc956cf0b13fb6ba20df49b",
+    "@S022.c26_t2": "5fdd74c21e191862777154d3ce4df580ac60f2c2",
+    "@S022.c32_t1": "0d6d9e10d46794945cef554f6ea0f4d428cfb168",
+    "@S022.c32_t2": "f8d5cf868f95996267b49d21e0972a00b29eb786",
+    "@S022.c32_t3": "120342f994b5bb6c62812a5f36258e1e913bde78",
+    "@S022.c32_t4": "0f458a7ab9421ef396bfd2423e22a30d65e88875",
+    "@S022.c27_t1": "d42b1d2d4a612b34c1012e0c35e978305415f9c3",
+    "@S022.c27_t2": "eb3817e271a0c951274753e0260d6cf0389d6b47",
+    "@S022.c84_t1": "6426ff148503c8c9fbd79892648d4aa77a29f7c3",
+    "@S022.c84_b1": "571822bf3d909785ff0a890f9fc4379515f6a525",
+    "@S022.c12_t1": "e41b6322cd966cebf31bcead64b547d67afdc117",
+    "@S022.c12_b1": "823de08ec98d108e5fe81edca1b963e46ce891c7"
+  },
+  "commit_labels": {
+    "S022.F": "87a311766537feb50cc6188be2269b50301af0d6",
+    "S022.b1": "9c5eb66ef24fbe1e7c964a4762cb33c2611042a3",
+    "S022.c12_b0": "5cbf63057796fe1d0d43c54e6fd3d5fc2f4e2f9d",
+    "S022.c12_b1": "c0ed72ead8d214fc7e967d2695b06d0988be0dea",
+    "S022.c12_t1": "216238dd0284378fed000930ee57892b21c647ba",
+    "S022.c12_t2": "bdc0b726122a2e789884db2b2eb0252d7af43ef1",
+    "S022.c26_b1": "ec07205ab0b1f0e6a930310f10cb1efbeb4c87a3",
+    "S022.c26_t1": "05db013dbf535e6fcbec891b8bb8cf08015805d8",
+    "S022.c26_t2": "579b798e222116134f6c2052712dc1a0374ddffe",
+    "S022.c27_b1": "9d467803563403ba7448f18703b44d9458ae4359",
+    "S022.c27_t1": "1eec278cbc81dc9131c8a5ded3957a1bb63c98ff",
+    "S022.c27_t2": "e621903b1e4270c1c3d39a2718c1a21011b41a2f",
+    "S022.c32_b1": "6e30c42434b10f54e6811c65ed378b5daf0c4bb9",
+    "S022.c32_t1": "d1a5f5ff11f054fc0cf805189429410556873c6e",
+    "S022.c32_t2": "c15d9ab6efe8df1cb5242ec2a721990ef662c8ea",
+    "S022.c32_t3": "4f4c6b36994ce699fc143627a9cbe5e47f1a157c",
+    "S022.c32_t4": "aba1cd3ca00fd56d42a178a933324e75d9ee0682",
+    "S022.c84_b0": "7c0b600ee660cbf882f1130f9dcd61bef8a6cd37",
+    "S022.c84_b1": "165e8e4768f4e9fb91253e27b9c95a8b039658f0",
+    "S022.c84_b2": "eb2ee6839c86f16fd97bda50dfd394613f97f52f",
+    "S022.c84_t1": "365ac11aa140b10066f9d8cc977ebd8c266262f7",
+    "S022.c84_t2": "9acbc7917bef2fe3a493fdde6a10a8126d3eed3b",
+    "S022.c84_u1": "56f68d4df311b6e6e58f928e921555896fe1c9f6",
+    "S022.t1": "a983402be31ca7ae8d8aa85ab9810f99890dc546"
+  }
+}

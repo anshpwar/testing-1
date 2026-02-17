@@ -1,0 +1,131 @@
+scenario_id: S076
+repo_id: testing-1
+title: Model column renamed while a new API view keeps the old name
+difficulty: 4
+primary_catalog_id: 76
+catalog_ids:
+- 76
+- 26
+- 20
+expected_git_outcome: CLEAN_BUT_BROKEN
+merge_pair:
+  base: scenario/S076/base
+  target: scenario/S076/target
+  all_pairs:
+  - - scenario/S076/base
+    - scenario/S076/target
+  additional_sides: {}
+fork_commit: '@S076.F'
+expected_conflicted_files: []
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S076/base
+- scenario/S076/target
+original_commits:
+- '@S076.k76b'
+derived_commits:
+- '@S076.k76t'
+change_relationships:
+- a: '@S076.k76b'
+  b: '@S076.k76t'
+  relation: unrelated
+files:
+- orders/models.py
+- orders/api_extra.py
+regions:
+- file: orders/models.py
+  model: Order
+  field: amount_cents
+testing_evidence: t1 PASSED; source changed again in t2, which has no record
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: true origin recoverable only by patch-id
+expected_warnings:
+- clean merge; the new API view still uses the renamed model field
+safe_resolution_constraints:
+- Git cannot detect this; only the test run can
+human_review_required: false
+assertions:
+- type: merge_then_tests
+  expect: fail
+  suites:
+  - integration
+id: '76'
+sub_entries:
+- original_commits:
+  - '@S076.c26_t1'
+  derived_commits:
+  - '@S076.c26_t2'
+  change_relationships:
+  - a: '@S076.c26_t1'
+    b: '@S076.c26_t2'
+    relation: unrelated
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: tax_exempt_limit_cents
+  testing_evidence: t1 PASSED; source changed again in t2, which has no record
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - tested code was modified afterwards
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: tree_differs
+    a: '@S076.c26_t1'
+    b: '@S076.c26_t2'
+    file: shopkit/rules.py
+  - type: note
+    ref: ci
+    commit: '@S076.c26_t2'
+    expect: absent
+  id: 76.a
+  catalog_id: 26
+- original_commits:
+  - '@S076.c20_t1'
+  derived_commits:
+  - '@S076.c20_b1'
+  change_relationships:
+  - a: '@S076.c20_t1'
+    b: '@S076.c20_b1'
+    relation: identical
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: payment_retry_delay_s
+  testing_evidence: none
+  deployment_evidence: none
+  metadata_availability: trailer and provenance note both name the wrong origin commit
+  known_uncertainty: true origin recoverable only by patch-id
+  expected_warnings:
+  - cherry-pick trailer does not point at the real origin
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: patch_id_equal
+    a: '@S076.c20_t1'
+    b: '@S076.c20_b1'
+  - type: trailer
+    commit: '@S076.c20_b1'
+    expect: invalid
+    origin: '@S076.c20_t1'
+  - type: note
+    ref: provenance
+    commit: '@S076.c20_b1'
+    expect: present
+  id: 76.b
+  catalog_id: 20
+patch_ids:
+  '@S076.k76b': e1dadd7f7501066a559bc4cb94f7ab2c1026f3f4
+  '@S076.k76t': 4bab4cfa6a4308330b1cf2eb806c1404e7856a3e
+  '@S076.c26_t1': f633c4d6bfb1c193f1254f1f90dc2bf4e9bf3c08
+  '@S076.c26_t2': 3d7e1aee1ebf4d94a1610aa0ba478387c03519f8
+  '@S076.c20_t1': 13cc3dcfcad934a8aedbb7c3740eef5621c42ecd
+  '@S076.c20_b1': 0fc96da0978ff8bd7cd518eb6dadd847155f54e6

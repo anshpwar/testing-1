@@ -1,0 +1,85 @@
+{
+  "scenario_id": "S091",
+  "repo_id": "testing-1",
+  "title": "Whole-file reformat concurrent with a logic change",
+  "difficulty": 3,
+  "primary_catalog_id": 91,
+  "catalog_ids": [
+    91
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S091/base",
+    "target": "scenario/S091/target",
+    "all_pairs": [
+      [
+        "scenario/S091/base",
+        "scenario/S091/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "87a311766537feb50cc6188be2269b50301af0d6",
+  "expected_conflicted_files": [
+    "shopkit/rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S091/base",
+    "scenario/S091/target"
+  ],
+  "original_commits": [
+    "0136bb5e1c16b2f17ceaf3b664980441145d52db"
+  ],
+  "derived_commits": [
+    "6c64ad750a26c4b8bd356d52bb78f8e1d954ca89"
+  ],
+  "change_relationships": [
+    {
+      "a": "6c64ad750a26c4b8bd356d52bb78f8e1d954ca89",
+      "b": "0136bb5e1c16b2f17ceaf3b664980441145d52db",
+      "relation": "unrelated"
+    }
+  ],
+  "files": [
+    "shopkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "shopkit/rules.py",
+      "function": "restock_threshold"
+    }
+  ],
+  "testing_evidence": "none",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "none",
+  "expected_warnings": [
+    "whole-file reformat on one side, logic change on the other"
+  ],
+  "safe_resolution_constraints": [
+    "apply the logic change to the reformatted file"
+  ],
+  "human_review_required": false,
+  "assertions": [
+    {
+      "type": "ast_equal_file",
+      "a": "6c64ad750a26c4b8bd356d52bb78f8e1d954ca89",
+      "b": "87a311766537feb50cc6188be2269b50301af0d6",
+      "file": "shopkit/rules.py"
+    }
+  ],
+  "id": "91",
+  "sub_entries": [],
+  "patch_ids": {
+    "@S091.t1": "a95efb7dde6b92765ef89351278c01e8e645b489",
+    "@S091.b1": "838ce914a8f8f0a402cb3fb6de41ae714c439d20"
+  },
+  "commit_labels": {
+    "S091.F": "87a311766537feb50cc6188be2269b50301af0d6",
+    "S091.b1": "6c64ad750a26c4b8bd356d52bb78f8e1d954ca89",
+    "S091.t1": "0136bb5e1c16b2f17ceaf3b664980441145d52db"
+  }
+}

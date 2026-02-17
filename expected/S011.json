@@ -1,0 +1,97 @@
+{
+  "scenario_id": "S011",
+  "repo_id": "testing-1",
+  "title": "Normal cherry-pick with -x, then both lines keep tuning",
+  "difficulty": 1,
+  "primary_catalog_id": 11,
+  "catalog_ids": [
+    11
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S011/base",
+    "target": "scenario/S011/target",
+    "all_pairs": [
+      [
+        "scenario/S011/base",
+        "scenario/S011/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "87a311766537feb50cc6188be2269b50301af0d6",
+  "expected_conflicted_files": [
+    "shopkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S011/base",
+    "scenario/S011/target"
+  ],
+  "original_commits": [
+    "6ffa2e40f68802158acafe2eecbd80b769b2fda4"
+  ],
+  "derived_commits": [
+    "cd26c30339178f4496edd51f97e99862350b9275"
+  ],
+  "change_relationships": [
+    {
+      "a": "6ffa2e40f68802158acafe2eecbd80b769b2fda4",
+      "b": "cd26c30339178f4496edd51f97e99862350b9275",
+      "relation": "identical"
+    }
+  ],
+  "files": [
+    "shopkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "shopkit/rules.py",
+      "function": "loyalty_points"
+    }
+  ],
+  "testing_evidence": "original t1 PASSED (synthetic, prod); backport b1 carries no record",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "none",
+  "expected_warnings": [
+    "backport carries no test evidence of its own"
+  ],
+  "safe_resolution_constraints": [],
+  "human_review_required": false,
+  "assertions": [
+    {
+      "type": "patch_id_equal",
+      "a": "6ffa2e40f68802158acafe2eecbd80b769b2fda4",
+      "b": "cd26c30339178f4496edd51f97e99862350b9275"
+    },
+    {
+      "type": "trailer",
+      "commit": "cd26c30339178f4496edd51f97e99862350b9275",
+      "expect": "valid",
+      "origin": "6ffa2e40f68802158acafe2eecbd80b769b2fda4"
+    },
+    {
+      "type": "note",
+      "ref": "ci",
+      "commit": "cd26c30339178f4496edd51f97e99862350b9275",
+      "expect": "absent"
+    }
+  ],
+  "id": "11",
+  "sub_entries": [],
+  "patch_ids": {
+    "@S011.t1": "34a6c283c237b8e6d6f94ddcdb523b7d72396d8b",
+    "@S011.b1": "34a6c283c237b8e6d6f94ddcdb523b7d72396d8b"
+  },
+  "commit_labels": {
+    "S011.F": "87a311766537feb50cc6188be2269b50301af0d6",
+    "S011.b1": "cd26c30339178f4496edd51f97e99862350b9275",
+    "S011.b2": "8f8c386a6f29760aa3803918e1c12652b60f7dc8",
+    "S011.t1": "6ffa2e40f68802158acafe2eecbd80b769b2fda4",
+    "S011.t2": "4ae764031282c856a4dab0fde53da42120fbe82a"
+  }
+}

@@ -1,0 +1,59 @@
+scenario_id: S099
+repo_id: testing-1
+title: Two branches add Django migrations with the same parent
+difficulty: 3
+primary_catalog_id: 99
+catalog_ids:
+- 99
+expected_git_outcome: CLEAN_BUT_BROKEN
+merge_pair:
+  base: scenario/S099/base
+  target: scenario/S099/target
+  all_pairs:
+  - - scenario/S099/base
+    - scenario/S099/target
+  additional_sides: {}
+fork_commit: '@S099.F'
+expected_conflicted_files: []
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S099/base
+- scenario/S099/target
+original_commits:
+- '@S099.m99b'
+derived_commits:
+- '@S099.m99t'
+change_relationships:
+- a: '@S099.m99b'
+  b: '@S099.m99t'
+  relation: unrelated
+files:
+- orders/migrations/0002_priority_99.py
+- orders/migrations/0002_region_99.py
+- orders/models.py
+regions:
+- file: orders/models.py
+  model: Order
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- two migrations share a parent; Django reports multiple leaf nodes
+safe_resolution_constraints:
+- resolve with a merge migration (makemigrations --merge)
+human_review_required: false
+assertions:
+- type: migration_leaves
+  app: orders
+  expect_greater_than: 1
+- type: merge_then_tests
+  expect: fail
+  suites:
+  - unit
+id: '99'
+sub_entries: []
+patch_ids:
+  '@S099.m99b': f19ebccaf98fea357cae3402d38ca68773e3b4a1
+  '@S099.m99t': 76c06d91abf771c2832612807be76af87011a28f

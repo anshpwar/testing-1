@@ -1,0 +1,252 @@
+scenario_id: S022
+repo_id: testing-1
+title: False 'tests passed' claim inside a multi-failure history
+difficulty: 5
+primary_catalog_id: 22
+catalog_ids:
+- 22
+- 26
+- 32
+- 27
+- 84
+- 12
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S022/base
+  target: scenario/S022/target
+  all_pairs:
+  - - scenario/S022/base
+    - scenario/S022/target
+  additional_sides: {}
+fork_commit: '@S022.F'
+expected_conflicted_files:
+- shopkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S022/base
+- scenario/S022/target
+original_commits:
+- '@S022.t1'
+derived_commits:
+- '@S022.b1'
+change_relationships:
+- a: '@S022.t1'
+  b: '@S022.b1'
+  relation: unrelated
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: payment_retry_delay_s
+testing_evidence: t1 message claims tests passed; no record exists and the suite actually fails
+deployment_evidence: none
+metadata_availability: message claim only
+known_uncertainty: true origin recoverable only by patch-id
+expected_warnings:
+- commit message is not test evidence
+safe_resolution_constraints: []
+human_review_required: true
+assertions:
+- type: note
+  ref: ci
+  commit: '@S022.t1'
+  expect: absent
+- type: message_contains
+  commit: '@S022.t1'
+  text: all tests passed
+- type: real_tests
+  commit: '@S022.t1'
+  suite: unit
+  expect: failed
+id: '22'
+sub_entries:
+- original_commits:
+  - '@S022.c26_t1'
+  derived_commits:
+  - '@S022.c26_t2'
+  change_relationships:
+  - a: '@S022.c26_t1'
+    b: '@S022.c26_t2'
+    relation: unrelated
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: loyalty_points
+  testing_evidence: t1 PASSED; source changed again in t2, which has no record
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - tested code was modified afterwards
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: tree_differs
+    a: '@S022.c26_t1'
+    b: '@S022.c26_t2'
+    file: shopkit/rules.py
+  - type: note
+    ref: ci
+    commit: '@S022.c26_t2'
+    expect: absent
+  id: 22.a
+  catalog_id: 26
+- original_commits:
+  - '@S022.c32_t1'
+  derived_commits:
+  - '@S022.c32_t2'
+  - '@S022.c32_t3'
+  - '@S022.c32_t4'
+  change_relationships:
+  - a: '@S022.c32_t1'
+    b: '@S022.c32_t4'
+    relation: unrelated
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: return_window_days
+  testing_evidence: t1 PASSED in January 2025; three commits changed the rules since
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - evidence predates later code changes
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: ancestor
+    a: '@S022.c32_t1'
+    b: '@S022.c32_t4'
+    expect: true
+  - type: note
+    ref: ci
+    commit: '@S022.c32_t1'
+    expect: present
+    fields:
+      finished_at: 2025-01-06T09:05:00+0000
+  id: 22.b
+  catalog_id: 32
+- original_commits:
+  - '@S022.c27_t1'
+  derived_commits:
+  - '@S022.c27_t2'
+  change_relationships:
+  - a: '@S022.c27_t1'
+    b: '@S022.c27_t2'
+    relation: unrelated
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: fraud_review_score
+  testing_evidence: record stored on t2 describes t1; t1 itself has no record
+  deployment_evidence: none
+  metadata_availability: misattached record
+  known_uncertainty: none
+  expected_warnings:
+  - note attached to a commit whose subject_commit names another commit
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: note_subject_mismatch
+    ref: ci
+    commit: '@S022.c27_t2'
+    subject: '@S022.c27_t1'
+  - type: note
+    ref: ci
+    commit: '@S022.c27_t1'
+    expect: absent
+  id: 22.c
+  catalog_id: 27
+- original_commits:
+  - '@S022.c84_t1'
+  derived_commits:
+  - '@S022.c84_b1'
+  change_relationships:
+  - a: '@S022.c84_t1'
+    b: '@S022.c84_b1'
+    relation: identical
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: price_rounding_step
+  testing_evidence: none
+  deployment_evidence: none
+  metadata_availability: message trailer names a nonexistent commit; provenance note names an unrelated
+    commit
+  known_uncertainty: true origin recoverable only by patch-id
+  expected_warnings:
+  - no provenance reference resolves to the true origin
+  safe_resolution_constraints: []
+  human_review_required: true
+  assertions:
+  - type: patch_id_equal
+    a: '@S022.c84_t1'
+    b: '@S022.c84_b1'
+  - type: trailer
+    commit: '@S022.c84_b1'
+    expect: invalid
+    origin: '@S022.c84_t1'
+  - type: note
+    ref: provenance
+    commit: '@S022.c84_b1'
+    expect: present
+  id: 22.d
+  catalog_id: 84
+- original_commits:
+  - '@S022.c12_t1'
+  derived_commits:
+  - '@S022.c12_b1'
+  change_relationships:
+  - a: '@S022.c12_t1'
+    b: '@S022.c12_b1'
+    relation: partial
+  files:
+  - shopkit/rules.py
+  - tests/test_rules.py
+  regions:
+  - file: shopkit/rules.py
+    function: coupon_cap_cents
+  testing_evidence: original t1 PASSED (synthetic); b1 differs from t1 and has no record
+  deployment_evidence: none
+  metadata_availability: full
+  known_uncertainty: none
+  expected_warnings:
+  - backport was modified after cherry-pick; test evidence does not transfer
+  safe_resolution_constraints: []
+  human_review_required: false
+  assertions:
+  - type: patch_id_differs
+    a: '@S022.c12_t1'
+    b: '@S022.c12_b1'
+  - type: trailer
+    commit: '@S022.c12_b1'
+    expect: valid
+    origin: '@S022.c12_t1'
+  id: 22.e
+  catalog_id: 12
+patch_ids:
+  '@S022.t1': 324dfb41f4edcf00a23f9a835fc519d612cfae22
+  '@S022.b1': d07afb7e109ae9e0b61b458ebb677eed3ab1e61f
+  '@S022.c26_t1': b53abacc9066650e2bc956cf0b13fb6ba20df49b
+  '@S022.c26_t2': 5fdd74c21e191862777154d3ce4df580ac60f2c2
+  '@S022.c32_t1': 0d6d9e10d46794945cef554f6ea0f4d428cfb168
+  '@S022.c32_t2': f8d5cf868f95996267b49d21e0972a00b29eb786
+  '@S022.c32_t3': 120342f994b5bb6c62812a5f36258e1e913bde78
+  '@S022.c32_t4': 0f458a7ab9421ef396bfd2423e22a30d65e88875
+  '@S022.c27_t1': d42b1d2d4a612b34c1012e0c35e978305415f9c3
+  '@S022.c27_t2': eb3817e271a0c951274753e0260d6cf0389d6b47
+  '@S022.c84_t1': 6426ff148503c8c9fbd79892648d4aa77a29f7c3
+  '@S022.c84_b1': 571822bf3d909785ff0a890f9fc4379515f6a525
+  '@S022.c12_t1': e41b6322cd966cebf31bcead64b547d67afdc117
+  '@S022.c12_b1': 823de08ec98d108e5fe81edca1b963e46ce891c7

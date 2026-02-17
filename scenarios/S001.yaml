@@ -1,0 +1,56 @@
+scenario_id: S001
+repo_id: testing-1
+title: Identical change by two developers under different hashes
+difficulty: 1
+primary_catalog_id: 1
+catalog_ids:
+- 1
+expected_git_outcome: EVIDENCE_ONLY
+merge_pair:
+  base: scenario/S001/base
+  target: scenario/S001/target
+  all_pairs:
+  - - scenario/S001/base
+    - scenario/S001/target
+  additional_sides: {}
+fork_commit: '@S001.F'
+expected_conflicted_files: []
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S001/base
+- scenario/S001/target
+original_commits:
+- '@S001.b1'
+derived_commits:
+- '@S001.t1'
+change_relationships:
+- a: '@S001.b1'
+  b: '@S001.t1'
+  relation: identical
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: gift_wrap_cents
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- identical logical change under different hashes
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: patch_id_equal
+  a: '@S001.b1'
+  b: '@S001.t1'
+- type: commit_differs
+  a: '@S001.b1'
+  b: '@S001.t1'
+id: '1'
+sub_entries: []
+patch_ids:
+  '@S001.b1': b1e562f28ae8763a9e863b09ee82f3576b631083
+  '@S001.t1': b1e562f28ae8763a9e863b09ee82f3576b631083

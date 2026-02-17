@@ -1,0 +1,91 @@
+{
+  "scenario_id": "S002",
+  "repo_id": "testing-1",
+  "title": "Same patch, different formatting",
+  "difficulty": 2,
+  "primary_catalog_id": 2,
+  "catalog_ids": [
+    2
+  ],
+  "expected_git_outcome": "CONFLICT",
+  "merge_pair": {
+    "base": "scenario/S002/base",
+    "target": "scenario/S002/target",
+    "all_pairs": [
+      [
+        "scenario/S002/base",
+        "scenario/S002/target"
+      ]
+    ],
+    "additional_sides": {}
+  },
+  "fork_commit": "87a311766537feb50cc6188be2269b50301af0d6",
+  "expected_conflicted_files": [
+    "shopkit/rules.py"
+  ],
+  "validation_method": "merge",
+  "clone_profile": "full",
+  "branches": [
+    "scenario/S002/base",
+    "scenario/S002/target"
+  ],
+  "original_commits": [
+    "f326852b04e6f8748e7d503111a40758811ad87b"
+  ],
+  "derived_commits": [
+    "231ab92ba806cbed439b3089a70145420d2e74ea"
+  ],
+  "change_relationships": [
+    {
+      "a": "f326852b04e6f8748e7d503111a40758811ad87b",
+      "b": "231ab92ba806cbed439b3089a70145420d2e74ea",
+      "relation": "equivalent"
+    }
+  ],
+  "files": [
+    "shopkit/rules.py",
+    "tests/test_rules.py"
+  ],
+  "regions": [
+    {
+      "file": "shopkit/rules.py",
+      "function": "express_surcharge_cents"
+    }
+  ],
+  "testing_evidence": "none",
+  "deployment_evidence": "none",
+  "metadata_availability": "full",
+  "known_uncertainty": "none",
+  "expected_warnings": [
+    "textual difference only; logic identical"
+  ],
+  "safe_resolution_constraints": [
+    "either side's logic is acceptable; do not report a behaviour change"
+  ],
+  "human_review_required": false,
+  "assertions": [
+    {
+      "type": "ast_equal",
+      "a": "f326852b04e6f8748e7d503111a40758811ad87b",
+      "b": "231ab92ba806cbed439b3089a70145420d2e74ea",
+      "file": "shopkit/rules.py",
+      "function": "express_surcharge_cents"
+    },
+    {
+      "type": "patch_id_differs",
+      "a": "f326852b04e6f8748e7d503111a40758811ad87b",
+      "b": "231ab92ba806cbed439b3089a70145420d2e74ea"
+    }
+  ],
+  "id": "2",
+  "sub_entries": [],
+  "patch_ids": {
+    "@S002.b1": "35e723551a6002867d08dfe05e14a47f474a5ff6",
+    "@S002.t1": "bf8737c7ac930a4000b8db15b743248066827373"
+  },
+  "commit_labels": {
+    "S002.F": "87a311766537feb50cc6188be2269b50301af0d6",
+    "S002.b1": "f326852b04e6f8748e7d503111a40758811ad87b",
+    "S002.t1": "231ab92ba806cbed439b3089a70145420d2e74ea"
+  }
+}

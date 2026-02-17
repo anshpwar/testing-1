@@ -1,0 +1,99 @@
+[
+  {
+    "scenario_id": "S011",
+    "catalog_ids": [
+      11
+    ],
+    "difficulty": 1,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Normal cherry-pick with -x, then both lines keep tuning"
+  },
+  {
+    "scenario_id": "S001",
+    "catalog_ids": [
+      1
+    ],
+    "difficulty": 1,
+    "expected_git_outcome": "EVIDENCE_ONLY",
+    "title": "Identical change by two developers under different hashes"
+  },
+  {
+    "scenario_id": "S013",
+    "catalog_ids": [
+      13
+    ],
+    "difficulty": 2,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Cherry-pick without -x"
+  },
+  {
+    "scenario_id": "S061",
+    "catalog_ids": [
+      61
+    ],
+    "difficulty": 2,
+    "expected_git_outcome": "EVIDENCE_ONLY",
+    "title": "Simple revert"
+  },
+  {
+    "scenario_id": "S002",
+    "catalog_ids": [
+      2
+    ],
+    "difficulty": 2,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Same patch, different formatting"
+  },
+  {
+    "scenario_id": "S008",
+    "catalog_ids": [
+      8
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Near-identical patches with different behaviour"
+  },
+  {
+    "scenario_id": "S091",
+    "catalog_ids": [
+      91
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CONFLICT",
+    "title": "Whole-file reformat concurrent with a logic change"
+  },
+  {
+    "scenario_id": "S099",
+    "catalog_ids": [
+      99
+    ],
+    "difficulty": 3,
+    "expected_git_outcome": "CLEAN_BUT_BROKEN",
+    "title": "Two branches add Django migrations with the same parent"
+  },
+  {
+    "scenario_id": "S076",
+    "catalog_ids": [
+      76,
+      26,
+      20
+    ],
+    "difficulty": 4,
+    "expected_git_outcome": "CLEAN_BUT_BROKEN",
+    "title": "Model column renamed while a new API view keeps the old name"
+  },
+  {
+    "scenario_id": "S022",
+    "catalog_ids": [
+      22,
+      26,
+      32,
+      27,
+      84,
+      12
+    ],
+    "difficulty": 5,
+    "expected_git_outcome": "CONFLICT",
+    "title": "False 'tests passed' claim inside a multi-failure history"
+  }
+]

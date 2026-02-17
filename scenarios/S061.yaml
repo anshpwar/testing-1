@@ -1,0 +1,54 @@
+scenario_id: S061
+repo_id: testing-1
+title: Simple revert
+difficulty: 2
+primary_catalog_id: 61
+catalog_ids:
+- 61
+expected_git_outcome: EVIDENCE_ONLY
+merge_pair:
+  base: scenario/S061/base
+  target: scenario/S061/target
+  all_pairs:
+  - - scenario/S061/base
+    - scenario/S061/target
+  additional_sides: {}
+fork_commit: '@S061.F'
+expected_conflicted_files: []
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S061/base
+- scenario/S061/target
+original_commits:
+- '@S061.c1'
+derived_commits:
+- '@S061.rv'
+change_relationships:
+- a: '@S061.c1'
+  b: '@S061.rv'
+  relation: reverted
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: cart_expiry_minutes
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- change fully reverted; net effect on base is nil
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: tree_equal
+  a: '@S061.rv'
+  b: '@S061.F'
+  file: shopkit/rules.py
+id: '61'
+sub_entries: []
+patch_ids:
+  '@S061.c1': 247aa146f46fb09ac753b517dfdcaa5bfc02021f
+  '@S061.rv': 5baea2769bd2df7ae271f85d7184bbe25196904d

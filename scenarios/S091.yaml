@@ -1,0 +1,56 @@
+scenario_id: S091
+repo_id: testing-1
+title: Whole-file reformat concurrent with a logic change
+difficulty: 3
+primary_catalog_id: 91
+catalog_ids:
+- 91
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S091/base
+  target: scenario/S091/target
+  all_pairs:
+  - - scenario/S091/base
+    - scenario/S091/target
+  additional_sides: {}
+fork_commit: '@S091.F'
+expected_conflicted_files:
+- shopkit/rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S091/base
+- scenario/S091/target
+original_commits:
+- '@S091.t1'
+derived_commits:
+- '@S091.b1'
+change_relationships:
+- a: '@S091.b1'
+  b: '@S091.t1'
+  relation: unrelated
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: restock_threshold
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- whole-file reformat on one side, logic change on the other
+safe_resolution_constraints:
+- apply the logic change to the reformatted file
+human_review_required: false
+assertions:
+- type: ast_equal_file
+  a: '@S091.b1'
+  b: '@S091.F'
+  file: shopkit/rules.py
+id: '91'
+sub_entries: []
+patch_ids:
+  '@S091.t1': a95efb7dde6b92765ef89351278c01e8e645b489
+  '@S091.b1': 838ce914a8f8f0a402cb3fb6de41ae714c439d20

@@ -1,0 +1,63 @@
+scenario_id: S011
+repo_id: testing-1
+title: Normal cherry-pick with -x, then both lines keep tuning
+difficulty: 1
+primary_catalog_id: 11
+catalog_ids:
+- 11
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S011/base
+  target: scenario/S011/target
+  all_pairs:
+  - - scenario/S011/base
+    - scenario/S011/target
+  additional_sides: {}
+fork_commit: '@S011.F'
+expected_conflicted_files:
+- shopkit/rules.py
+- tests/test_rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S011/base
+- scenario/S011/target
+original_commits:
+- '@S011.t1'
+derived_commits:
+- '@S011.b1'
+change_relationships:
+- a: '@S011.t1'
+  b: '@S011.b1'
+  relation: identical
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: loyalty_points
+testing_evidence: original t1 PASSED (synthetic, prod); backport b1 carries no record
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- backport carries no test evidence of its own
+safe_resolution_constraints: []
+human_review_required: false
+assertions:
+- type: patch_id_equal
+  a: '@S011.t1'
+  b: '@S011.b1'
+- type: trailer
+  commit: '@S011.b1'
+  expect: valid
+  origin: '@S011.t1'
+- type: note
+  ref: ci
+  commit: '@S011.b1'
+  expect: absent
+id: '11'
+sub_entries: []
+patch_ids:
+  '@S011.t1': 34a6c283c237b8e6d6f94ddcdb523b7d72396d8b
+  '@S011.b1': 34a6c283c237b8e6d6f94ddcdb523b7d72396d8b

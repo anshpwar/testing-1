@@ -1,0 +1,60 @@
+scenario_id: S002
+repo_id: testing-1
+title: Same patch, different formatting
+difficulty: 2
+primary_catalog_id: 2
+catalog_ids:
+- 2
+expected_git_outcome: CONFLICT
+merge_pair:
+  base: scenario/S002/base
+  target: scenario/S002/target
+  all_pairs:
+  - - scenario/S002/base
+    - scenario/S002/target
+  additional_sides: {}
+fork_commit: '@S002.F'
+expected_conflicted_files:
+- shopkit/rules.py
+validation_method: merge
+clone_profile: full
+branches:
+- scenario/S002/base
+- scenario/S002/target
+original_commits:
+- '@S002.b1'
+derived_commits:
+- '@S002.t1'
+change_relationships:
+- a: '@S002.b1'
+  b: '@S002.t1'
+  relation: equivalent
+files:
+- shopkit/rules.py
+- tests/test_rules.py
+regions:
+- file: shopkit/rules.py
+  function: express_surcharge_cents
+testing_evidence: none
+deployment_evidence: none
+metadata_availability: full
+known_uncertainty: none
+expected_warnings:
+- textual difference only; logic identical
+safe_resolution_constraints:
+- either side's logic is acceptable; do not report a behaviour change
+human_review_required: false
+assertions:
+- type: ast_equal
+  a: '@S002.b1'
+  b: '@S002.t1'
+  file: shopkit/rules.py
+  function: express_surcharge_cents
+- type: patch_id_differs
+  a: '@S002.b1'
+  b: '@S002.t1'
+id: '2'
+sub_entries: []
+patch_ids:
+  '@S002.b1': 35e723551a6002867d08dfe05e14a47f474a5ff6
+  '@S002.t1': bf8737c7ac930a4000b8db15b743248066827373
